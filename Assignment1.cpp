@@ -21,7 +21,7 @@ int main(int argc, char** argv)
     length = x.size();
     for(int i = 0;i<length;++i)
     {
-      char currentChar = x[i];
+      char currentChar = tolower(x[i]);
       cout << currentChar <<endl;
     }
   }
