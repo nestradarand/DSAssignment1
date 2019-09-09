@@ -22,12 +22,12 @@ int main(int args,char** argv)
     exit(1);
   }
   string x;
-  int length;
   while(inputStream >> x)
   {
     counter ->countIndividual(x);
     counter -> countBigrams(x);
     counter -> addLine();
+    counter -> storeNewLength(x.size());
   }
   cout << "File successfully read from" << endl;
   cout<< "Total counts:" << endl;
@@ -36,7 +36,6 @@ int main(int args,char** argv)
   cout << "C:" << counter -> getCCount() << endl;
   cout << "G:" << counter-> getGCount() << endl;
 
-  cout << "Nucleotides: " << counter -> getTotalNucleotides()<<endl;
   cout << "Bigram totals:\n" << "AA:"<< counter -> getAACount() << endl;
   cout << "AC:" << counter ->getACCount() << endl;
   cout << "AT:" << counter -> getATCount() << endl;
@@ -60,6 +59,13 @@ int main(int args,char** argv)
   cout << "Proportion for CC:" << counter ->getCCProp() <<endl;
   cout << "Proportion for CT:" << counter ->getCTProp() <<endl;
   cout << "Proportion for CG:" << counter ->getCGProp() <<endl;
+  cout << "Line length stats:" << endl;
+  cout << "Average Line length:" << counter -> getAverageLineLength() <<endl;
+  cout << "Total line length:" << counter -> getTotalNucleotides() <<endl;
+
+  cout << "Stored lengths:" << counter ->getLengths() <<endl;
+  string theNums = "2,2,2,2,2";
+  cout << "Length summations should be here ->" << counter ->getVariance()<<endl;
 
 
 

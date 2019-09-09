@@ -2,6 +2,7 @@
 #include "Counter.h"
 #include <string>
 
+
 using namespace std;
 
 Counter::Counter(){}
@@ -98,7 +99,7 @@ int Counter::getGCount()
 {
   return gCount;
 }
-int Counter::getTotalNucleotides()
+int Counter::getTotalNucleotides()//also gives sum of all line lengths
 {
   return totalNucleotides;
 }
@@ -189,4 +190,40 @@ float Counter::getCTProp()
 float Counter::getCGProp()
 {
   return float(cgCount)/float(totalBigrams);
+}
+float Counter::getAverageLineLength()
+{
+  return float(totalNucleotides)/float(numStrings);
+}
+void Counter::storeNewLength(int i)
+{
+  if(lengths.size() <1)
+    lengths += std::to_string(i);
+  else
+  {
+    lengths += ",";
+    lengths += std::to_string(i);
+  }
+}
+string Counter::getLengths()
+{
+  return lengths;
+}
+float Counter::getVariance()
+{
+  int sum = 0;
+  int x;
+  string currentValue = "";
+  for(int i = 0;i<=lengths.size(); ++i)
+  {
+    currentValue = "";
+    while(lengths[i+1] != ',')
+    {
+      currentValue += lengths[i++];
+    }
+    cout <<currentValue<<endl;
+    std::basic_istringstream(currentValue) >>x;
+    sum += x;
+  }
+  return float(sum);
 }

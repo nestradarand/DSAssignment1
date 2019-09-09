@@ -22,6 +22,7 @@ class Counter
   int totalBigrams;
 
   int numStrings = 0;
+  std::string lengths = "";
 public:
   Counter();
   ~Counter();
@@ -62,7 +63,10 @@ public:
   float getCTProp();
   float getCGProp();
 
-
+  float getAverageLineLength();
+  void storeNewLength(int i);
+  std::string getLengths();
+  void getVariance();
 };
 
 #endif
