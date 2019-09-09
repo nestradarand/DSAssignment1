@@ -1,5 +1,8 @@
-atcgatcgtagcagcagctagcagctagcagctagcatc
-gtgcatgcac
-atcgatcgtagcagcagctagcagctagcagctagcatccgtgac
-cgcgcgcgctagac
-cagtgtgtgcac 
+aaa
+ac
+at
+ag
+ca
+ct
+cg
+cc
