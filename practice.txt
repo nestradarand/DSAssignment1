@@ -1,1 +1,5 @@
-ccccccccccccccccccccccc
+atcgatcgtagcagcagctagcagctagcagctagcatc
+gtgcatgcac
+atcgatcgtagcagcagctagcagctagcagctagcatccgtgac
+cgcgcgcgctagac
+cagtgtgtgcac 

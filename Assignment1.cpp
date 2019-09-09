@@ -5,20 +5,21 @@
 
 using namespace std;
 
-int acount = 0;
-int ccount = 0;
-int tcount = 0;
-int gcount = 0;
+int aCount = 0;
+int cCount = 0;
+int tCount = 0;
+int gCount = 0;
 
-int aacount = 0;
-int account = 0;
-int atcount = 0;
-int agcount = 0;
-int cacount = 0;
-int cccount = 0;
-int ctcount = 0;
-int cgcount = 0;
+int aaCount = 0;
+int acCount = 0;
+int atCount = 0;
+int agCount = 0;
+int caCount = 0;
+int ccCount = 0;
+int ctCount = 0;
+int cgCount = 0;
 
+int numStrings = 0;
 int totalNucleotides = 0;
 
 void countLetters(string fileName);
@@ -36,19 +37,20 @@ int main(int argc, char** argv)
   countLetters(argv[1]);
   cout << "File successfully read from" << endl;
   cout<< "Total counts:" << endl;
-  cout << acount <<endl;
-  cout << ccount << endl;
-  cout <<tcount << endl;
-  cout <<gcount << endl;
-  cout << "Sum:" << getSum(acount,ccount,tcount,gcount)<< " Nucleotides"<<endl;
-  cout << "Bigram totals:\n" << "AA:"<< aacount << endl;
-  cout << "AC:" << account << endl;
-  cout << "AT:" << atcount << endl;
-  cout << "AG:" << agcount << endl;
-  cout << "CA:"<<cacount << endl;
-  cout << "CC:" << cccount << endl;
-  cout << "CT:" << ctcount << endl;
-  cout << "CG:" << cgcount<<endl;
+  cout << aCount <<endl;
+  cout << cCount << endl;
+  cout <<tCount << endl;
+  cout <<gCount << endl;
+  cout << "Sum:" << getSum(aCount,cCount,tCount,gCount)<< " Nucleotides"<<endl;
+  cout << "Bigram totals:\n" << "AA:"<< aaCount << endl;
+  cout << "AC:" << acCount << endl;
+  cout << "AT:" << atCount << endl;
+  cout << "AG:" << agCount << endl;
+  cout << "CA:"<<caCount << endl;
+  cout << "CC:" << ccCount << endl;
+  cout << "CT:" << ctCount << endl;
+  cout << "CG:" << cgCount<<endl;
+  cout<<"Total Number of Strings:" << numStrings <<endl;
 
   return 0;
 }
@@ -67,6 +69,7 @@ void countLetters(string fileName)
   {
     countIndividual(x);
     countBigrams(x);
+    numStrings++;
     cout << x<< endl;
   }
   inputStream.close();
@@ -83,22 +86,22 @@ void countIndividual(string str)
     char x = tolower(str[i]);
     if(x == 'a')
     {
-      acount ++;
+      aCount ++;
       totalNucleotides ++;
     }
     else if(x == 'c')
     {
-      ccount ++;
+      cCount ++;
       totalNucleotides ++;
     }
     else if(x == 't')
     {
-      tcount ++;
+      tCount ++;
       totalNucleotides ++;
     }
     else if(x == 'g')
     {
-      gcount ++;
+      gCount ++;
       totalNucleotides ++;
     }
   }
@@ -110,20 +113,20 @@ void countBigrams(string str)
     char x = tolower(str[i]);
     char y = tolower(str[i+1]);
     if(x == 'a' && y == 'a')
-      aacount ++;
+      aaCount ++;
     else if(x == 'a' && y == 'c')
-      account ++;
+      acCount ++;
     else if(x == 'a' && y == 't')
-      atcount ++;
-    else if(x == 'a' && y == 'g')
-      agcount ++;
-    else if(x == 'c' && y == 'a')
-      cacount ++;
+      atCount ++;
     else if(x == 'c' && y == 'c')
-      ccount ++;
+      ccCount ++;
+    else if(x == 'a' && y == 'g')
+      agCount ++;
+    else if(x == 'c' && y == 'a')
+      caCount ++;
     else if(x == 'c' && y == 't')
-      ctcount ++;
+      ctCount ++;
     else if(x == 'c' && y == 'g')
-      cgcount ++;
+      cgCount ++;
   }
 }
