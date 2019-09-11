@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Counter.h"
 #include <string>
+#include <math.h>
 
 
 using namespace std;
@@ -137,11 +138,11 @@ int Counter::getCGCount()
 }
 void Counter::addLine()
 {
-  numStrings ++;
+  numLines ++;
 }
 int Counter::getTotalLines()
 {
-  return numStrings;
+  return numLines;
 }
 float Counter::getAProp()
 {
@@ -191,39 +192,29 @@ float Counter::getCGProp()
 {
   return float(cgCount)/float(totalBigrams);
 }
-float Counter::getAverageLineLength()
+double Counter::getAverageLineLength()
 {
-  return float(totalNucleotides)/float(numStrings);
+  return double(totalNucleotides)/double(numLines);
 }
-void Counter::storeNewLength(int i)
+double Counter::calculateAverageLineLength()
 {
-  if(lengths.size() <1)
-    lengths += std::to_string(i);
-  else
-  {
-    lengths += ",";
-    lengths += std::to_string(i);
-  }
+  avgLineLength = double(totalNucleotides)/double(numLines);
 }
-string Counter::getLengths()
+void Counter::calculateVarianceSum(string str)
 {
-  return lengths;
+  double newLength = str.size();
+  double difference = pow((newLength - avgLineLength),2);
+  varSum = varSum+ difference;
 }
-float Counter::getVariance()
+double Counter::getVariance()
 {
-  int sum = 0;
-  int x;
-  string currentValue = "";
-  for(int i = 0;i<=lengths.size(); ++i)
-  {
-    currentValue = "";
-    while(lengths[i+1] != ',')
-    {
-      currentValue += lengths[i++];
-    }
-    cout <<currentValue<<endl;
-    std::basic_istringstream(currentValue) >>x;
-    sum += x;
-  }
-  return float(sum);
+  if(!variance)
+    variance = varSum/float(numLines);
+  return variance;
+}
+double Counter::getStdDeviation()
+{
+  if(!stdDeviation)
+    stdDeviation = sqrt(variance);
+  return stdDeviation;
 }

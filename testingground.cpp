@@ -27,8 +27,21 @@ int main(int args,char** argv)
     counter ->countIndividual(x);
     counter -> countBigrams(x);
     counter -> addLine();
-    counter -> storeNewLength(x.size());
   }
+  counter -> calculateAverageLineLength();
+  //clears the failed state of the stream and seeks the first character
+  inputStream.clear();
+  inputStream.seekg(0);
+  if(!inputStream)
+  {
+    cout << "Error occurred trying to read file" << endl;
+    exit(1);
+  }
+  while(inputStream >>x)
+  {
+    counter -> calculateVarianceSum(x);
+  }
+
   cout << "File successfully read from" << endl;
   cout<< "Total counts:" << endl;
   cout << "A:"<< counter -> getACount() <<endl;
@@ -62,10 +75,10 @@ int main(int args,char** argv)
   cout << "Line length stats:" << endl;
   cout << "Average Line length:" << counter -> getAverageLineLength() <<endl;
   cout << "Total line length:" << counter -> getTotalNucleotides() <<endl;
+  cout << "Number of lines: " << counter -> getTotalLines() <<endl;
 
-  cout << "Stored lengths:" << counter ->getLengths() <<endl;
-  string theNums = "2,2,2,2,2";
-  cout << "Length summations should be here ->" << counter ->getVariance()<<endl;
+  cout<< "Variance of line lengths: "<<counter ->getVariance() << endl;
+  cout << "Standard Deviation of line length:" << counter ->getStdDeviation() << endl;
 
 
 

@@ -1,5 +1,5 @@
-cgtagc
-cg
-c
-c
-c
+cc
+cc
+cc
+ccc
+cccc
