@@ -22,7 +22,7 @@ class Counter
   int totalBigrams;
 
   int numLines = 0;
-  double avgLineLength = 0;
+  double avgLineLength;
   float varSum = 0;
 
   double variance;
@@ -70,11 +70,12 @@ public:
   float getCGProp();
 
   double getAverageLineLength();
-  double calculateAverageLineLength();
 
   void calculateVarianceSum(std::string str);
   double getVariance();
   double getStdDeviation();
+
+  double calculateGaussianNum();
 };
 
 #endif

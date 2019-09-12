@@ -184,37 +184,44 @@ float Counter::getCCProp()
 {
   return float(ccCount)/float(totalBigrams);
 }
-float Counter::getCTProp()
+float Counter::getCTProp()//works
 {
   return float(ctCount)/float(totalBigrams);
 }
-float Counter::getCGProp()
+float Counter::getCGProp()//works
 {
   return float(cgCount)/float(totalBigrams);
 }
 double Counter::getAverageLineLength()
 {
-  return double(totalNucleotides)/double(numLines);
+  if(!avgLineLength)
+    avgLineLength = float(totalNucleotides)/float(numLines);
+  return avgLineLength;
 }
-double Counter::calculateAverageLineLength()
-{
-  avgLineLength = double(totalNucleotides)/double(numLines);
-}
-void Counter::calculateVarianceSum(string str)
+void Counter::calculateVarianceSum(string str)//works
 {
   double newLength = str.size();
-  double difference = pow((newLength - avgLineLength),2);
+  double difference = pow((newLength - getAverageLineLength()),2);
   varSum = varSum+ difference;
 }
-double Counter::getVariance()
+double Counter::getVariance()//works
 {
   if(!variance)
     variance = varSum/float(numLines);
   return variance;
 }
-double Counter::getStdDeviation()
+double Counter::getStdDeviation()//works
 {
   if(!stdDeviation)
     stdDeviation = sqrt(variance);
   return stdDeviation;
+}
+double Counter::calculateGaussianNum()//works
+{
+  srand(time(0));
+  double a = (double(rand() % 100+1))/float(100);
+  double b = (double(rand() % 100+1))/float(100);
+  double c = sqrt(-2*log(a)) * cos(2*M_PI*b);
+  double d = getStdDeviation()*c + getAverageLineLength();
+  return d;
 }

@@ -1,5 +1,9 @@
-cc
-cc
-cc
-ccc
-cccc
+actagctagctgatcgtagtctagtcgatgctgc
+cgatgctagtcgatgtcgatgctagctgac
+actagctagctgatcgtagtctagtcgatgctgccgtgctgc
+cgatgctagtcgatgtcgatgctagctgac
+gcgcgcgcgcgcgcg
+acactgtgc
+cacagtgcatgtgca
+gtgtgtgcagcgca
+cgtgcacacac 

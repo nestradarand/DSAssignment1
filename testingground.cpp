@@ -28,7 +28,6 @@ int main(int args,char** argv)
     counter -> countBigrams(x);
     counter -> addLine();
   }
-  counter -> calculateAverageLineLength();
   //clears the failed state of the stream and seeks the first character
   inputStream.clear();
   inputStream.seekg(0);
@@ -79,10 +78,25 @@ int main(int args,char** argv)
 
   cout<< "Variance of line lengths: "<<counter ->getVariance() << endl;
   cout << "Standard Deviation of line length:" << counter ->getStdDeviation() << endl;
-
+  cout << "Gaussian number:" << counter -> calculateGaussianNum() << endl;
+  for(int i = 0; i <=10;++i)
+  {
+    int num = counter -> calculateGaussianNum();
+    for(int w = 0; w<=num;++w)
+      cout << "a" ;
+    cout << "\n";
+  }
 
 
   inputStream.close();
   delete counter;
+  // ofstream outputStream;
+  // int p = 34343434;
+  // outputStream.open("testingWriting.txt");
+  // outputStream << "Hello bud\n" << endl;
+  // outputStream << "Hey there"<< endl;
+  // outputStream.close();
+
+
   return 0;
 }
