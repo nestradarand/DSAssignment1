@@ -95,7 +95,6 @@ int main(int args,char** argv)
     int cLength  = ceil(newLength*(counter ->getCProp()));
     int tLength = ceil(newLength*(counter -> getTProp()));
     int gLength = ceil(newLength*(counter -> getGProp()));
-    outputStream << aLength << "," << cLength << "," << tLength<<","<<gLength<<endl;
     while(aLength > 0||cLength >0||tLength>0||gLength>0)
     {
       int randSelecter = rand()%4;
