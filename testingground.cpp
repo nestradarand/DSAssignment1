@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #include "Counter.h"
+#include <math.h>
 
 using namespace std;
 
@@ -79,24 +80,53 @@ int main(int args,char** argv)
   cout<< "Variance of line lengths: "<<counter ->getVariance() << endl;
   cout << "Standard Deviation of line length:" << counter ->getStdDeviation() << endl;
   cout << "Gaussian number:" << counter -> calculateGaussianNum() << endl;
-  for(int i = 0; i <=10;++i)
-  {
-    int num = counter -> calculateGaussianNum();
-    for(int w = 0; w<=num;++w)
-      cout << "a" ;
-    cout << "\n";
-  }
 
 
   inputStream.close();
+  ofstream outputStream;
+  outputStream.open("testingWriting.txt");
+  srand(time(0));
+  for(int i = 0; i <= 1000;++i)
+  {
+    int newLength = counter ->calculateGaussianNum();
+    while(newLength <=0)
+      newLength = counter -> calculateGaussianNum();
+    int aLength = ceil(newLength*(counter ->getAProp()));
+    int cLength  = ceil(newLength*(counter ->getCProp()));
+    int tLength = ceil(newLength*(counter -> getTProp()));
+    int gLength = ceil(newLength*(counter -> getGProp()));
+    outputStream << aLength << "," << cLength << "," << tLength<<","<<gLength<<endl;
+    while(aLength > 0||cLength >0||tLength>0||gLength>0)
+    {
+      int randSelecter = rand()%4;
+      if(randSelecter == 0&&aLength>0)
+      {
+        outputStream << "a";
+        aLength -- ;
+      }
+      else if(randSelecter == 1&&cLength>0)
+      {
+        outputStream << "c";
+        cLength -- ;
+      }
+      else if(randSelecter == 2&&tLength>0)
+      {
+        outputStream << "t";
+        tLength -- ;
+      }
+      else if(randSelecter == 3&&gLength>0)
+      {
+        outputStream << "g";
+        gLength -- ;
+      }
+    }
+    outputStream << "\r\n";
+  }
+
+
+
+  outputStream.close();
+  cout << "Done" << endl;
   delete counter;
-  // ofstream outputStream;
-  // int p = 34343434;
-  // outputStream.open("testingWriting.txt");
-  // outputStream << "Hello bud\n" << endl;
-  // outputStream << "Hey there"<< endl;
-  // outputStream.close();
-
-
   return 0;
 }

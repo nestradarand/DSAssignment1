@@ -6,7 +6,9 @@
 
 using namespace std;
 
-Counter::Counter(){}
+Counter::Counter(){
+  srand(time(0));
+}
 Counter::~Counter(){}
 
 void Counter::countIndividual(string str)
@@ -218,10 +220,40 @@ double Counter::getStdDeviation()//works
 }
 double Counter::calculateGaussianNum()//works
 {
-  srand(time(0));
-  double a = (double(rand() % 100+1))/float(100);
-  double b = (double(rand() % 100+1))/float(100);
+  double a = (double(rand() % 100+.99))/float(100);
+  double b = (double(rand() % 100+.99))/float(100);
   double c = sqrt(-2*log(a)) * cos(2*M_PI*b);
   double d = getStdDeviation()*c + getAverageLineLength();
   return d;
 }
+// int aCount = 10;
+// int cCount = 10;
+// int tCount = 10;
+// int gCount = 10;
+//
+// srand(time(0));
+//
+// while(aCount > 0||cCount >0||tCount>0||gCount>0)
+// {
+//   int randSelecter = rand()%4;
+//   if(randSelecter == 0&&aCount>0)
+//   {
+//     cout << "a";
+//     aCount -- ;
+//   }
+//   else if(randSelecter == 1&&cCount>0)
+//   {
+//     cout << "c";
+//     cCount -- ;
+//   }
+//   else if(randSelecter == 2&&tCount>0)
+//   {
+//     cout << "t";
+//     tCount -- ;
+//   }
+//   else if(randSelecter == 3&&gCount>0)
+//   {
+//     cout << "g";
+//     gCount -- ;
+//   }
+// }
